@@ -1,0 +1,64 @@
+1
+Hello World !
+6
+Hello Hello Hello 
+18
+-------------------
+2
+ran
+T
+TneoSc
+Tra
+ces
+secilS uo sehcnarT
+secilS uo sehcnar
+secilS uo sehcnarT
+---------------------
+3
+True
+False
+-------------------
+4
+on peut iterer sur les chaines
+-------------------
+5
+e
+s
+e
+e
+-------------------
+6
+[0, 1, 2, 3, 4, 5]
+0
+5
+[2]
+[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1, 0]
+-------------------
+7
+['a', 'b', 'c', 'e', 1, 2, 3]
+d
+e
+6
+-------------------
+8
+[1, 2, 'a', 'b', 'a', 'b', 'a', 'b']
+['a', 'b']
+False
+False
+False
+True
+True
+False
+-------------------
+9
+[2, 68, 10, 8, 14, 16, 186]
+[34, 4, 8]
+[68, 8, 16]
+-------------------
+10
+['ceci', 'est', 'un', 'tableau', 'de', 'mots']
+['ceciest', 'ceciun', 'cecitableau', 'cecide', 'cecimots', 'estceci', 'estun', 'esttableau', 'estde', 'estmots', 'unceci', 'unest', 'untableau', 'unde', 'unmots', 'tableauceci', 'tableauest', 'tableauun', 'tableaude', 'tableaumots', 'dececi', 'deest', 'deun', 'detableau', 'demots', 'motsceci', 'motsest', 'motsun', 'motstableau', 'motsde']
+-------------------
+11
+['aaa', 'aab', 'aba', 'abb', 'baa', 'bab', 'bba', 'bbb']

@@ -1,0 +1,3 @@
+def hms_to_sec(heure,minute,seconde):
+	return heure*3600+minte*60+seconde
+
