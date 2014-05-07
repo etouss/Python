@@ -1,5 +1,5 @@
-#!/opt/local/bin/python
-#coding: utf8
+#!/opt/local/bin/python3.3
+# -*- coding: utf-8 -*-
 from menu import*
 
 #Fichier servant simplement au demarage du programme:

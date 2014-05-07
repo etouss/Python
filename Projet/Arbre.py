@@ -12,7 +12,7 @@ class Arbre(Frame):
         Frame.__init__(self,tk)
 
 
-        
+
         self.scale = DoubleVar()                                                                                                                                                                                                                                                                                            #Variable permettant de définir l'échelle du mobile pour le Zoom.
         self.scale.set(1)
         self.top=Frame(tk)                                                                                                                                                                                                                                                                                                  #Frame servant à l'affichage des information liée au mobile, FPS, score temps écoulé.
@@ -60,8 +60,8 @@ class Arbre(Frame):
         self.maximum = 0
         self.longueurMin = 2*l
         self.rayon = 0
-        
-        #Premier parcours de l'arbre permetant le setup de certaine variable tel que la taille des boules.                                                                                                                                                                                                                                                                                                                                    
+
+        #Premier parcours de l'arbre permetant le setup de certaine variable tel que la taille des boules.
     def initialisation(self,tableau):
         setScore(0)
         print(getScore())
@@ -69,11 +69,11 @@ class Arbre(Frame):
         self.initAffichage(self.sommet)
         self.calculRayon()
         self.affichage(self.sommet)
-        
+
         #Calcul du rayon des boules pour évité le chevauchement.
     def calculRayon(self):
         self.rayon = self.longueurMin/(2*(self.maximum)**(1/3))
-        
+
         #Fonction récursive en parcours sufixe permettant la construction de l'arbre a partir du tableau de description
     def construction(self,tableau,i=0):
         sommet = Sommet()
@@ -91,14 +91,14 @@ class Arbre(Frame):
             (sommet.droit).poids= tableau[1]
             (sommet.droit).poidsVar= tableau[1]
             self.maximum = max(self.maximum,(sommet.droit).poids)
-            
+
         sommet.poids = (sommet.gauche).poids + (sommet.droit).poids
         sommet.poidsVar = (sommet.gauche).poids + (sommet.droit).poids
         sommet.barycentre = (sommet.droit).poids / sommet.poids
         self.profondeur = max(self.profondeur,i)
-        
+
         return sommet
-        
+
         #Fonction gérant l'affichage du mobile grace au donnée de l'arbre de même elle est "recursive" par rapport a ces fils.
     def affichage(self,sommet,i=1,x=l,lo=2*l):
         if i == 1 :
@@ -134,12 +134,12 @@ class Arbre(Frame):
             buttons = buttons+1
 
             #Fonction completant les donner indispensable des arbres tel que leur positions avant l'affichage.
-    def initAffichage(self,sommet,i=1,x=l,lo=2*l): 
+    def initAffichage(self,sommet,i=1,x=l,lo=2*l):
         if i == 1 :
             i=15
             #recursivité
             sommet.y = h*(i-1)
-            sommet.x = l+l*2*sommet.barycentre 
+            sommet.x = l+l*2*sommet.barycentre
             sommet.longueur = 2*l
             sommet.droit.y = h*(i)
             sommet.droit.x = 3*l
@@ -164,7 +164,7 @@ class Arbre(Frame):
         if sommet.gauche.barycentre != None:
             self.afficheDyna(sommet.gauche)
         else:
-            if degrade : 
+            if degrade :
                 self.sphereDegrade(self.canvas,sommet.gauche.color,sommet.gauche.x-(sommet.gauche.poidsVar)**(1/3)*self.rayon,sommet.gauche.y+h,sommet.gauche.x+(sommet.gauche.poidsVar)**(1/3)*self.rayon,sommet.gauche.y+h+(sommet.gauche.poidsVar)**(1/3)*self.rayon*2,sommet.gauche)
             else :
                  self.canvas.create_oval(sommet.gauche.x-(sommet.gauche.poidsVar)**(1/3)*self.rayon,sommet.gauche.y+h,sommet.gauche.x+(sommet.gauche.poidsVar)**(1/3)*self.rayon,sommet.gauche.y+h+(sommet.gauche.poidsVar)**(1/3)*self.rayon*2,fill=sommet.gauche.color,tags=sommet.gauche.tagListen,width=2)
@@ -177,12 +177,12 @@ class Arbre(Frame):
             else :
                 self.canvas.create_oval(sommet.droit.x-(sommet.droit.poidsVar)**(1/3)*self.rayon,sommet.droit.y+h,sommet.droit.x+(sommet.droit.poidsVar)**(1/3)*self.rayon,sommet.droit.y+h+(sommet.droit.poidsVar)**(1/3)*self.rayon*2,fill=sommet.droit.color,tags=sommet.droit.tagListen,width=2)
                 self.canvas.tag_bind(sommet.droit.tagListen,'<Button-1>',sommet.droit.erroClick)
-                
-                
+
+
         self.canvas.create_line(sommet.gauche.x,sommet.gauche.y,sommet.droit.x,sommet.droit.y,width=2)
         self.canvas.create_line(sommet.gauche.x,sommet.gauche.y,sommet.gauche.x,sommet.gauche.y+h,width=2)
         self.canvas.create_line(sommet.droit.x,sommet.droit.y,sommet.droit.x,sommet.droit.y+h,width=2)
-        
+
         #Fonction mettant a jours l'ensemble des données de la frame : le mobile et les label.
     def update(self):
         t0=time.time()
@@ -196,8 +196,8 @@ class Arbre(Frame):
         self.labScore["text"]="Score : "+str(int(getScore()/math.pi*180))
         self.labTemps["text"]="Temps écoulé : "+str(int(time.time()-td))
         self.labFPS["text"]="FPS : "+str(1//getTempsUnitaire())
- 
- 
+
+
 #Ensemble de fonction indispensable a l'affichage des couleur et du dégrader.
     def randomColor(self):
         return COLORS[random.randint(0,751)]
@@ -276,5 +276,3 @@ class Arbre(Frame):
                 if t[0]+t[1]+t[2]>=759 :
                     break
         sommet.clignotant += 1
- 
-        
